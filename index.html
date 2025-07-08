@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | NFT preview card component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      :root {
+        --Blue-500: hsl(215, 51%, 70%);
+        --Cyan-400: hsl(178, 100%, 50%);
+        --Blue-950-main-BG: hsl(217, 54%, 11%);
+        --Blue-900-card-BG: hsl(216, 50%, 16%);
+        --Blue-800-line: hsl(215, 32%, 27%);
+        --White: hsl(0, 0%, 100%);
+        --Font-size-paragraph: clamp(1.125rem, 1.081rem + 0.188vw, 1.25rem);
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
+        min-height: 100dvh;
+        background-color: var(--Blue-950-main-BG);
+        font-family: "Outfit", Arial, Helvetica, sans-serif;
+        font-size: var(--Font-size-paragraph);
+      }
+
+      main {
+        background-color: var(--Blue-900-card-BG);
+        padding: 1.5rem;
+        width: 80dvw;
+        border-radius: 10px;
+        max-width: 350px;
+        max-height: 595px;
+        margin: 3rem auto 3rem auto;
+      }
+
+      .image {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      .images-div {
+        position: relative;
+        width: 100%;
+      }
+
+      .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--Cyan-400);
+        opacity: 0;
+        border-radius: 10px;
+        transition: opacity 0.3s;
+        z-index: 1;
+      }
+      .images-div:hover .image-overlay {
+        opacity: 0.5;
+      }
+      .image-overlay:focus {
+        outline: 2px solid var(--Cyan-400);
+        opacity: 0.5;
+      }
+
+      .view-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        z-index: 2;
+      }
+      .images-div:hover .view-icon {
+        opacity: 1;
+
+        border-radius: 10px;
+      }
+      .images-div:hover .image {
+        opacity: 0.4;
+      }
+
+      h1 {
+        margin: 1.75rem auto 1.5rem auto;
+        color: var(--White);
+        font-size: clamp(1.563rem, 1.518rem + 0.188vw, 1.688rem);
+      }
+      h1:hover {
+        color: var(--Cyan-400);
+        cursor: pointer;
+      }
+
+      p {
+        margin: 0 auto 1.375rem auto;
+        color: var(--Blue-500);
+        font-weight: 300;
+      }
+
+      .price-date {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .price-div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--Cyan-400);
+      }
+      .date-div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--Blue-500);
+      }
+
+      hr {
+        border: 1px var(--Blue-800-line) solid;
+        margin: 1.125rem auto;
+      }
+
+      .creator {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .creator p {
+        margin: 0;
+      }
+
+      .creator img {
+        border-radius: 50%;
+        border: 1px var(--White) solid;
+        height: 32px;
+        width: 32px;
+      }
+
+      .creator-name {
+        color: var(--White);
+        font-weight: 300;
+        text-decoration: none;
+      }
+
+      .creator-name:hover {
+        color: var(--Cyan-400);
+        cursor: pointer;
+      }
+
+      .attribution {
+        font-size: clamp(0.688rem, 0.643rem + 0.188vw, 0.813rem);
+        text-align: center;
+        color: var(--White);
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <main role="main" aria-label="NFT Preview Card">
+      <div class="images-div">
+        <div
+          class="image-overlay"
+          tabindex="0"
+          aria-label="View Equilibrium NFT image overlay"
+          role="button"
+          aria-pressed="false"
+          title="View Equilibrium NFT (press Enter or Space)"
+        ></div>
+        <img
+          src="images/icon-view.svg"
+          class="view-icon"
+          alt="View NFT"
+          aria-hidden="true"
+          focusable="false"
+        />
+        <img
+          class="image"
+          src="images/image-equilibrium.jpg"
+          alt="Equilibrium NFT preview image"
+        />
+      </div>
+      <h1 id="nft-title">
+        <a
+          href="#"
+          tabindex="0"
+          aria-label="View details for Equilibrium #3429"
+          style="color: inherit; text-decoration: none"
+          >Equilibrium #3429</a
+        >
+      </h1>
+      <p id="nft-desc">Our Equilibrium collection promotes balance and calm.</p>
+      <div class="price-date" aria-label="NFT price and time left">
+        <div class="price-div">
+          <img
+            src="images/icon-ethereum.svg"
+            alt="Ethereum icon"
+            aria-hidden="true"
+            focusable="false"
+          />
+          <span class="price">0.041 ETH</span>
+        </div>
+        <div class="date-div">
+          <img
+            src="images/icon-clock.svg"
+            alt="Clock icon"
+            aria-hidden="true"
+            focusable="false"
+          />
+          <span class="date">3 days left</span>
+        </div>
+      </div>
+      <hr />
+      <div class="creator" aria-label="NFT creator">
+        <img src="images/image-avatar.png" alt="Avatar of Jules Wyvern" />
+        <p>
+          Creation of
+          <a
+            href="#"
+            tabindex="0"
+            aria-label="View profile of Jules Wyvern"
+            class="creator-name"
+            >Jules Wyvern</a
+          >
+        </p>
+      </div>
+    </main>
+    <footer role="contentinfo" aria-label="Site footer">
+      <div class="attribution">
+        Coded by
+        <a
+          href="https://dhia-zorai.github.io/My-Portfolio/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Dhia Zorai's portfolio"
+          >Dhia Zorai</a
+        >.
+      </div>
+    </footer>
+  </body>
+</html>
